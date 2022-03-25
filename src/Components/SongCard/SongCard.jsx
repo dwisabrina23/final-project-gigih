@@ -3,7 +3,7 @@ import {BsFillPlayFill} from 'react-icons/bs';
 import './Song.css';
 function SongCard({data}) {
     return (
-        <div className="d-flex songs">
+        <div className="col-md-4 songs">
             <div className="card song">
                 <div className="song-img-wrapper">
                     <img
@@ -17,7 +17,7 @@ function SongCard({data}) {
                     </button>
                 </div>
                 <div className="card-body">
-                    <h4 className="song-title">{data.name}</h4>
+                    <h4 className="song-title" style={data.name.length > 25 ? {fontSize: "0.89rem"} : {}}>{data.name}</h4>
                     <small className="song-album">{data.album.name}</small>
                     <p className="artist">{data.artists[0].name}</p>
                 </div>
