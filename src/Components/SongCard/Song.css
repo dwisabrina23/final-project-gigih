@@ -1,12 +1,12 @@
 .song {
-    margin: 10px;
+    margin: 10px 2px;
     padding: 2px;
     border-image: linear-gradient(45deg, rgb(28, 28, 138), rgb(253, 233, 51)) 1;
     border-image-width: 2px;
 }
 
 .play-btn {
-    padding: 7px 24px 7px 18px;
+    padding: 5px 20px 5px 16px;
     position: relative;
     bottom: 20px;
 }
@@ -26,7 +26,7 @@
 }
 
 .card-body .song-title {
-    font-size: 1.345rem;
+    font-size: 1.12rem;
     margin-bottom: 0.17rem !important;
     font-weight: 600;
     font-family: Arial, Helvetica, sans-serif;
@@ -44,4 +44,6 @@
 
 .song-album {
     font-family: monospace;
+    font-size: 0.7655rem;
+    letter-spacing: -0.77px;
 }
