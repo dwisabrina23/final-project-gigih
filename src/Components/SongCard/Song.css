@@ -23,18 +23,19 @@
 .card-body {
     padding: 0.62rem 0.856rem;
     margin-top: -10px;
+    aspect-ratio: calc(1.88/0.73);
 }
 
 .card-body .song-title {
     font-size: 1.12rem;
-    margin-bottom: 0.17rem !important;
+    margin-bottom: 0.174Srem !important;
     font-weight: 600;
     font-family: Arial, Helvetica, sans-serif;
     color: rgb(2, 59, 95);
 }
 
 .card-body .artist {
-    margin-top: 0.17rem !important;
+    margin-top: 0.156rem !important;
     margin-bottom: 0.2rem;
     font-style: italic;
     font-weight: 600;
@@ -46,4 +47,9 @@
     font-family: monospace;
     font-size: 0.7655rem;
     letter-spacing: -0.77px;
+    overflow: hidden;
+    white-space: nowrap;
+    display: inline-block; /* for inline elements e.g. span, strong, em etc */
+    text-overflow: ellipsis;
+    width: calc(90%);
 }
