@@ -1,12 +1,31 @@
-import React from "react";
-import './Playlist.css';
+import React, {useEffect} from "react";
+import "./Playlist.css";
+import {useGetAuth} from '../../Hooks/useGetAuth';
 
-function CreatePlaylist(props) {
+function SideMenu({setToken}) {
+    localStorage.setItem("isAuth", false);
+    const {redirect, callback} = useGetAuth();
+    const isAuth = localStorage.getItem('isAuth');
+    
+    useEffect(()=> {
+        if (window.location.hash) {
+            const token = callback().access_token
+            if (token) {
+              setToken(token);
+              localStorage.setItem("accToken",token);
+              localStorage.setItem("isAuth", true);
+              window.location.hash = "";
+            }
+          } else if (isAuth) {
+            console.log("whoops an error occured");
+          }
+          // eslint-disable-next-line react-hooks/exhaustive-deps
+        }, [isAuth]);
+
     return (
         <>
             <h1 className="text-center txt-create">Create Playlist</h1>
-            <hr />
-            <div className="form-wrapper">
+            <div className="form-wrapper mb-3">
                 <form className="form">
                     <div className="form-floating mb-3">
                         <input
@@ -36,8 +55,10 @@ function CreatePlaylist(props) {
                     </button>
                 </form>
             </div>
+            <hr/>
+            <a className="mb-3 login-btn" onClick={() => {redirect()}}>Login</a>
         </>
     );
 }
 
-export default CreatePlaylist;
+export default SideMenu;
