@@ -3,7 +3,6 @@ import "./Playlist.css";
 import {useGetAuth} from '../../Hooks/useGetAuth';
 
 function SideMenu({setToken}) {
-    localStorage.setItem("isAuth", false);
     const {redirect, callback} = useGetAuth();
     const isAuth = localStorage.getItem('isAuth');
     
@@ -13,15 +12,21 @@ function SideMenu({setToken}) {
             if (token) {
               setToken(token);
               localStorage.setItem("accToken",token);
-              localStorage.setItem("isAuth", true);
-              window.location.hash = "";
+              localStorage.setItem("isAuth", JSON.stringify(true));
+            //   window.location.hash = "";
+              window.location.href = "/";
             }
           } else if (isAuth) {
-            console.log("whoops an error occured");
+            console.log("you are already logged in");
           }
           // eslint-disable-next-line react-hooks/exhaustive-deps
         }, [isAuth]);
-
+    
+    const handleLogout = () => {
+        localStorage.removeItem("accToken");
+        localStorage.removeItem("isAuth");
+        window.location.reload();
+    }
     return (
         <>
             <h1 className="text-center txt-create">Create Playlist</h1>
@@ -56,7 +61,13 @@ function SideMenu({setToken}) {
                 </form>
             </div>
             <hr/>
-            <a className="mb-3 login-btn" onClick={() => {redirect()}}>Login</a>
+            {
+                isAuth ?
+                (<a className="mb-3 login-btn" onClick={handleLogout}>Logout</a>)
+                :
+                (<a className="mb-3 login-btn" onClick={() => {redirect()}}>Login</a>)
+
+            }
         </>
     );
 }
