@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap');
+/* sidemenu */
+.form-wrapper{
+    padding-top: 10px;
+}
+
+h1 {
+    font-size: 28px;
+}
+  
+.txt-create {
+    border-bottom: 3px solid rgb(9, 61, 61);
+    padding-bottom: 5px;
+}
+.login-btn{
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    color: rgb(2, 95, 95);
+    font-family: 'Nunito', sans-serif;
+    cursor: pointer;
+}

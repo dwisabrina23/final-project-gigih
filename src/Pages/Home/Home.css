@@ -1,0 +1,16 @@
+.sidemenu {
+    padding: 30px;
+    background-color: rgb(138, 197, 175);
+}
+.song-section {
+    padding-top: 20px;
+    padding-right: 2rem;
+    padding-left: 1rem;
+    padding-bottom: 3rem;
+    background-color: rgb(18, 49, 53);
+}
+.song-section h1 {
+    color: rgb(2, 95, 95);
+    /* overflow */
+    overflow: visible;
+}

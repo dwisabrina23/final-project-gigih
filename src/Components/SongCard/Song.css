@@ -1,0 +1,55 @@
+.song {
+    margin: 10px 2px;
+    padding: 2px;
+    border-image: linear-gradient(45deg, rgb(28, 28, 138), rgb(253, 233, 51)) 1;
+    border-image-width: 2px;
+}
+
+.play-btn {
+    padding: 5px 20px 5px 16px;
+    position: relative;
+    bottom: 20px;
+}
+
+.song-img-wrapper {
+    padding: 1px;
+}
+
+.song-img-wrapper img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.card-body {
+    padding: 0.62rem 0.856rem;
+    margin-top: -10px;
+    aspect-ratio: calc(1.88/0.73);
+}
+
+.card-body .song-title {
+    font-size: 1.12rem;
+    margin-bottom: 0.174Srem !important;
+    font-weight: 600;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(2, 59, 95);
+}
+
+.card-body .artist {
+    margin-top: 0.156rem !important;
+    margin-bottom: 0.2rem;
+    font-style: italic;
+    font-weight: 600;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(36, 53, 56);
+}
+
+.song-album {
+    font-family: monospace;
+    font-size: 0.7655rem;
+    letter-spacing: -0.77px;
+    overflow: hidden;
+    white-space: nowrap;
+    display: inline-block; /* for inline elements e.g. span, strong, em etc */
+    text-overflow: ellipsis;
+    width: calc(90%);
+}
