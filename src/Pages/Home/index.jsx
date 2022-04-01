@@ -12,6 +12,9 @@ function HomePage(props) {
     const [searchRes, setSearchRes] = useState([]);
     const [spotifyToken, setSpotifyToken] = useState("");
 
+    //state for selected song
+    const [selectedSong, setSelectedSong] = useState([]);
+    
     const handleSearchSong = async (keyword) => {
         let result;
         const acc_token = spotifyToken;
@@ -56,6 +59,17 @@ function HomePage(props) {
         }
     }
 
+    const handleAddToSelected = (id) => {
+        const newSelected = [...selectedSong, id];
+        setSelectedSong(newSelected);
+        console.log("added to selected, isi: ", selectedSong);
+    }
+
+    const handleRemoveFromSelected = (id) => {
+        const newSelected = selectedSong.filter(idSong => idSong !== id);
+        selectedSong = [...newSelected];
+    }
+
     const title = `Search result for '${search}':`
     return (
         <div className="row">
@@ -68,7 +82,7 @@ function HomePage(props) {
                 <PageTitle title={title}/>
                 <div className="row">
                     {searchRes?.items?.map((song, idx) => (
-                        <SongCard data={song} key={idx} />
+                        <SongCard data={song} key={idx} selectedSong={selectedSong} handleAdd={handleAddToSelected} handleRemove={handleRemoveFromSelected} />
                     ))}
                 </div>
             </div>

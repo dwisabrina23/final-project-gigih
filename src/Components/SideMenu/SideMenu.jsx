@@ -13,8 +13,8 @@ function SideMenu({setToken}) {
               setToken(token);
               localStorage.setItem("accToken",token);
               localStorage.setItem("isAuth", JSON.stringify(true));
-            //   window.location.hash = "";
-              window.location.href = "/";
+              window.location.hash = "";
+            //   window.location.href = "/";
             }
           } else if (isAuth) {
             console.log("you are already logged in");
