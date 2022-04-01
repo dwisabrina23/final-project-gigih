@@ -1,7 +1,10 @@
-import React from "react";
-import {BsFillPlayFill} from 'react-icons/bs';
-import './Song.css';
-function SongCard({data}) {
+import React, { useEffect } from "react";
+import { BsFillPlayFill, BsX } from "react-icons/bs";
+import "./Song.css";
+
+function SongCard({ data, selectedSong, handleAdd, handleRemove }) {
+    const isSelected = selectedSong.includes(data.id);
+
     return (
         <div className="col-md-4 songs">
             <div className="card song">
@@ -11,13 +14,33 @@ function SongCard({data}) {
                         src={data.album.images[1].url}
                         alt="Eye_of_the_Storm"
                     />
-                    <button className="btn btn-primary rounded-pill play-btn">
-                        <BsFillPlayFill color="eff5ed" size={27} />
-                        Select
-                    </button>
+                    {isSelected ? (
+                        <button
+                            className="btn btn-primary-outline rounded-pill play-btn"
+                            onClick={() => handleRemove(data.id)}
+                        >
+                            <BsX className="btn-icon" color="rgb(2, 95, 95)" size={27}/>
+                            Deselect
+                        </button>
+                    ) : (
+                        <button
+                            className="btn btn-primary rounded-pill play-btn"
+                            onClick={() => handleAdd(data.id)}
+                        >
+                            <BsFillPlayFill color="eff5ed" size={27} />
+                            Select
+                        </button>
+                    )}
                 </div>
                 <div className="card-body">
-                    <h4 className="song-title" style={data.name.length > 25 ? {fontSize: "0.89rem"} : {}}>{data.name}</h4>
+                    <h4
+                        className="song-title"
+                        style={
+                            data.name.length > 25 ? { fontSize: "0.89rem" } : {}
+                        }
+                    >
+                        {data.name}
+                    </h4>
                     <small className="song-album">{data.album.name}</small>
                     <p className="artist">{data.artists[0].name}</p>
                 </div>
