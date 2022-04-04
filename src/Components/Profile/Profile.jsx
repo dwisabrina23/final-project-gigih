@@ -1,0 +1,14 @@
+import React from 'react';
+
+function Profile({data}) {
+    return (
+        <div className='d-flex m-3'>
+            <div>
+                <img  className='rounded-circle' style={{width:"30px", height:"30px"}} src={data.images.url}/>
+            </div>
+            <h5 className='px-3'>{data.display_name}</h5>
+        </div>
+    );
+}
+
+export default Profile;

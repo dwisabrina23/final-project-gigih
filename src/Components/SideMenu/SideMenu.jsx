@@ -1,11 +1,14 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import "./Playlist.css";
 import {useGetAuth} from '../../Hooks/useGetAuth';
+import Profile from "../Profile/Profile";
+import axios from "axios";
 
 function SideMenu({setToken}) {
     const {redirect, callback} = useGetAuth();
     const isAuth = localStorage.getItem('isAuth');
-    
+    const [userData, setUserData] = useState([]);
+
     useEffect(()=> {
         if (window.location.hash) {
             const token = callback().access_token
@@ -14,12 +17,12 @@ function SideMenu({setToken}) {
               localStorage.setItem("accToken",token);
               localStorage.setItem("isAuth", JSON.stringify(true));
               window.location.hash = "";
+              handleGetProfile(token);
             //   window.location.href = "/";
             }
           } else if (isAuth) {
             console.log("you are already logged in");
           }
-          // eslint-disable-next-line react-hooks/exhaustive-deps
         }, [isAuth]);
     
     const handleLogout = () => {
@@ -27,6 +30,24 @@ function SideMenu({setToken}) {
         localStorage.removeItem("isAuth");
         window.location.reload();
     }
+    const handleGetProfile = async (token) => {
+        let result;
+        try {
+            result = await axios.get(
+                `https://api.spotify.com/v1/me`,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            );
+            // console.log(result.data.tracks.items);
+            // store fetch result to searchRes
+            setUserData(result.data.tracks)
+        } catch (err) {
+            console.error(err);
+        }
+    };
     return (
         <>
             <h1 className="text-center txt-create">Create Playlist</h1>
@@ -63,7 +84,7 @@ function SideMenu({setToken}) {
             <hr/>
             {
                 isAuth ?
-                (<a className="mb-3 login-btn" onClick={handleLogout}>Logout</a>)
+                (<> <Profile data={userData}/>               <a className="mb-3 login-btn" onClick={handleLogout}>Logout</a></>)
                 :
                 (<a className="mb-3 login-btn" onClick={() => {redirect()}}>Login</a>)
 

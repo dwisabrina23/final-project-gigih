@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PageTitle from "../../Components/Title/PageTitle";
 import SongCard from "../../Components/SongCard/SongCard";
 import SearchButton from "../../Components/Search/SearchButton";
 import SideMenu from "../../Components/SideMenu/SideMenu";
 import "./Home.css";
-import data from "./StaticData";
 import axios from "axios";
 
 function HomePage(props) {
@@ -14,7 +13,10 @@ function HomePage(props) {
 
     //state for selected song
     const [selectedSong, setSelectedSong] = useState([]);
-    
+
+    const useGetProfile = async () => {
+
+    }
     const handleSearchSong = async (keyword) => {
         let result;
         const acc_token = spotifyToken;
@@ -41,6 +43,7 @@ function HomePage(props) {
         }
     };
 
+
     // handle enter when searching
     const handleKeyPress = (e) => {
         const value = e.target.value;
@@ -56,19 +59,10 @@ function HomePage(props) {
             e.stopPropagation(); // Really this time.
         }else{
             return;
-        }
+        } 
     }
 
-    const handleAddToSelected = (id) => {
-        const newSelected = [...selectedSong, id];
-        setSelectedSong(newSelected);
-        console.log("added to selected, isi: ", selectedSong);
-    }
-
-    const handleRemoveFromSelected = (id) => {
-        const newSelected = selectedSong.filter(idSong => idSong !== id);
-        selectedSong = [...newSelected];
-    }
+    
 
     const title = `Search result for '${search}':`
     return (
@@ -82,7 +76,7 @@ function HomePage(props) {
                 <PageTitle title={title}/>
                 <div className="row">
                     {searchRes?.items?.map((song, idx) => (
-                        <SongCard data={song} key={idx} selectedSong={selectedSong} handleAdd={handleAddToSelected} handleRemove={handleRemoveFromSelected} />
+                        <SongCard data={song} key={idx} selectedSong={selectedSong} setSelected={setSelectedSong}/>
                     ))}
                 </div>
             </div>
