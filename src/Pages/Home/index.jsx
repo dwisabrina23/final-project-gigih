@@ -9,7 +9,6 @@ import axios from "axios";
 function HomePage(props) {
     const [search, setSearch] = useState("")
     const [searchRes, setSearchRes] = useState([]);
-    const [spotifyToken, setSpotifyToken] = useState("");
 
     //state for selected song
     const [selectedSong, setSelectedSong] = useState([]);
@@ -68,7 +67,7 @@ function HomePage(props) {
     return (
         <div className="row">
             <div className="col-md-3 sidemenu">
-                <SideMenu setToken={setSpotifyToken}/>
+                <SideMenu/>
             </div>
             <div className="col-md-9 song-section">
                 <SearchButton setSearch={setSearch} search={search} handleKeyPress={handleKeyPress}/>
