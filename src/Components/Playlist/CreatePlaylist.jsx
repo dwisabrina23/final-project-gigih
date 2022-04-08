@@ -1,7 +1,10 @@
 import React, {useState} from 'react';
+import axios from 'axios';
 import { useSelector } from 'react-redux';
+
 function CreatePlaylist(props) {
     const token = useSelector((state) => state.auth.token);
+    const userID = useSelector((state) => state.auth.user_id);
 
     const initForm = {
         title:"",
@@ -31,7 +34,7 @@ function CreatePlaylist(props) {
         };
         const API_URL = 'https://api.spotify.com/v1';
         axios
-            .post(`${API_URL}/users/${user_id}/playlists`, dataPlaylist, {headers: {Authorization: `Bearer ${token}`}})
+            .post(`${API_URL}/users/${userID}/playlists`, dataPlaylist, {headers: {Authorization: `Bearer ${token}`}})
             .then((resp) => {
                 if(resp.status === 200){
                     console.log("playlist added!");

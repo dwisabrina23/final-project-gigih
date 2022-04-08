@@ -5,6 +5,7 @@ import SearchButton from "../../Components/Search/SearchButton";
 import SideMenu from "../../Components/SideMenu/SideMenu";
 import "./Home.css";
 import axios from "axios";
+import {useSelector} from "react-redux";
 
 function HomePage(props) {
     const [search, setSearch] = useState("")
@@ -18,7 +19,7 @@ function HomePage(props) {
     }
     const handleSearchSong = async (keyword) => {
         let result;
-        const acc_token = spotifyToken;
+        const acc_token = useSelector((state) => state.auth.token);
         console.log("isi acc token di handle search", acc_token);
         try {
             result = await axios.get(

@@ -1,72 +1,41 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./Sidemenu.css";
-import { useGetAuth } from "../../Hooks/useGetAuth";
 import Profile from "../Profile/Profile";
-import axios from "axios";
-import CreatePlaylist from "../Playlist/CreatePlaylist";
-import {setToken, setUserID} from '../../Redux/Slice/AuthSlice';
-import { useDispatch, useSelector } from "react-redux";
+import {Link} from 'react-router-dom';
+import {useDispatch, useSelector} from 'react-redux';
+import {logout} from '../../Redux/Slice/AuthSlice';
 
 function SideMenu() {
-    const { redirect, callback } = useGetAuth();
     const isAuth = localStorage.getItem("isAuth");
-    const [userData, setUserData] = useState([]);
     const dispatch = useDispatch();
-
-    useEffect(() => {
-        if (window.location.hash) {
-            const token = callback().access_token;
-            if (token) {
-                localStorage.setItem("isAuth", JSON.stringify(true));
-                dispatch(setToken(token));
-                handleGetProfile(token);
-                window.location.hash = "";
-            }
-        } else if (isAuth) {
-            console.log("you are already logged in");
-        }
-    }, [isAuth]);
-
     const handleLogout = () => {
-        localStorage.removeItem("accToken");
-        localStorage.removeItem("isAuth");
+        // localStorage.removeItem("accToken");
+        // localStorage.removeItem("isAuth");
+        dispatch(logout());
         window.location.reload();
     };
-    const handleGetProfile = async (token) => {
-        let result;
-        try {
-            result = await axios.get(`https://api.spotify.com/v1/me`, {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            });
-            // store fetch result to searchRes
-            console.log(result);
-            // setUserData(result.data.user);
-        } catch (err) {
-            console.error(err);
-        }
-    };
+    const userData = useSelector((state) => state.auth.user_data);
     return (
         <>
-            <CreatePlaylist/>
+            <Link to='/playlist'>Playlist</Link>
             <hr />
             {isAuth ? (
                 <>
                     <Profile data={userData} />
-                    <a className="mb-3 login-btn" onClick={handleLogout}>
+                    <button className="mb-3 login-btn" onClick={handleLogout}>
                         Logout
-                    </a>
+                    </button>
                 </>
             ) : (
-                <a
-                    className="mb-3 login-btn"
-                    onClick={() => {
-                        redirect();
-                    }}
-                >
-                    Login
-                </a>
+                <></>
+                // <a
+                //     className="mb-3 login-btn"
+                //     onClick={() => {
+                //         redirect();
+                //     }}
+                // >
+                //     Login
+                // </a>
             )}
         </>
     );
