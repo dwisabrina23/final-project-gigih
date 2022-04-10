@@ -1,17 +1,15 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { BsFillPlayFill, BsX } from "react-icons/bs";
 import "./Song.css";
 
 function SongCard({ data, selectedSong, setSelected}) {
     const isSelected = selectedSong?.includes(data.id);
-    
     const [select, setSelect] = useState(isSelected);
 
     const handleAddToSelected = () => {
         setSelect(!select);
         const newSelected = [...selectedSong, data.id]
         setSelected(newSelected);
-        console.log("added to selected, isi: ", selectedSong);
     }
 
     const handleRemoveFromSelected = () => {
@@ -19,6 +17,10 @@ function SongCard({ data, selectedSong, setSelected}) {
         const newSelected = selectedSong.filter(idSong => idSong !== data.id);
         setSelected(newSelected);
     }
+
+    useEffect(() => {
+        
+    }, [selectedSong])
 
     return (
         <div className="col-md-4 songs">

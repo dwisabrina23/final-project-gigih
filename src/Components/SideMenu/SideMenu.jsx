@@ -1,42 +1,46 @@
 import React from "react";
 import "./Sidemenu.css";
 import Profile from "../Profile/Profile";
-import {Link} from 'react-router-dom';
-import {useDispatch, useSelector} from 'react-redux';
-import {logout} from '../../Redux/Slice/AuthSlice';
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../Redux/Slice/AuthSlice";
+import { MdPlaylistPlay } from "react-icons/md";
+import { AiFillHome } from "react-icons/ai";
 
 function SideMenu() {
-    const isAuth = localStorage.getItem("isAuth");
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const isAuth = useSelector((state) => state.auth.login);
+    const userData = useSelector((state) => state?.auth.user_data);
+
     const handleLogout = () => {
-        // localStorage.removeItem("accToken");
-        // localStorage.removeItem("isAuth");
         dispatch(logout());
-        window.location.reload();
+        navigate("/");
     };
-    const userData = useSelector((state) => state.auth.user_data);
+
     return (
         <>
-            <Link to='/playlist'>Playlist</Link>
+            {isAuth && <Profile data={userData} />}
             <hr />
-            {isAuth ? (
-                <>
-                    <Profile data={userData} />
-                    <button className="mb-3 login-btn" onClick={handleLogout}>
-                        Logout
-                    </button>
-                </>
-            ) : (
-                <></>
-                // <a
-                //     className="mb-3 login-btn"
-                //     onClick={() => {
-                //         redirect();
-                //     }}
-                // >
-                //     Login
-                // </a>
-            )}
+            <Link to={`/playlist`} className="text-decoration-none mb-3">
+                <div className="item-menu mb-3 px-3">
+                    <MdPlaylistPlay size="20" color="rgb(2, 95, 95)" />
+                    <span className="text-menu px-2">Playlist</span>
+                </div>
+            </Link>
+            <Link to={`/home`} className="text-decoration-none mb-3">
+                <div className="item-menu mb-3 px-3">
+                    <AiFillHome size="20" color="rgb(2, 95, 95)" />
+                    <span className="text-menu px-2">Home</span>
+                </div>
+            </Link>
+            <button
+                className="mb-3 login-btn btn btn-primary rounded"
+                onClick={handleLogout}
+            >
+                Logout
+            </button>
         </>
     );
 }

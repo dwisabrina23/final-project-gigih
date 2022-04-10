@@ -22,7 +22,6 @@ function CreatePlaylist(props) {
 
     const handleSubmit = (e) => {
         e.preventDefalut();
-        console.log("submitted", playlist);
         handleCreatePlaylist(playlist);
     }
 
