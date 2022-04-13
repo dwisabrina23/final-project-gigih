@@ -1,7 +1,0 @@
-{
-    "extends": ["@imaginary-cloud/react"],
-    "rules": {
-        "semi": ["error", "always"],
-        "quotes": ["error", "double"]
-    }
-  }

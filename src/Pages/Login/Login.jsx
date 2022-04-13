@@ -4,6 +4,7 @@ import {useSelector, useDispatch} from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 import axios from 'axios';
 import {setUser} from "../../Redux/Slice/AuthSlice";
+import './Login.css';
 
 function Login() {
     const navigate = useNavigate();
