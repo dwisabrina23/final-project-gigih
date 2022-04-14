@@ -5,7 +5,8 @@ import { v4 as uuidv4 } from "uuid";
 import axios from 'axios';
 import {setUser} from "../../Redux/Slice/AuthSlice";
 import './Login.css';
-
+import { Button } from '@chakra-ui/react'
+import Navbar from '../../Components/Navbar/Navbar';
 function Login() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -61,9 +62,10 @@ function Login() {
 
 	return (
 		<div className="login-container">
-			<button onClick={(e) => handleLogin(e)} className="btn btn-primary rounded">
+			<Navbar/>
+			<Button colorScheme="green[700]" onClick={(e) => handleLogin(e)}>
 				Login with spotify
-			</button>
+			</Button>
 		</div>
 	);
 };
