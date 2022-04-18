@@ -6,6 +6,7 @@ import SideMenu from "../../Components/SideMenu/SideMenu";
 import "./Home.css";
 import axios from "axios";
 import {useSelector} from "react-redux";
+import _ from "lodash";
 
 function HomePage() {
     const [search, setSearch] = useState("")
@@ -44,17 +45,44 @@ function HomePage() {
 
         //code for enter = 13
         if(e.keyCode === 13){
-            // console.log("Enter key pressed, target value: ", encodeURI(value.trim()));
             const keyword = encodeURI(value.trim());
             handleSearchSong(keyword);
-            e.preventDefault(); // Let's stop this event.
-            e.stopPropagation(); // Really this time.
+            e.preventDefault();
+            e.stopPropagation();
         }else{
             return;
         } 
     }
 
+    const addTrack = (id) => {
+        const newSelected = [...selectedSong, id];
+        setSelectedSong({
+            newSelected
+        })
+    }
+
+    const removeTrack = (id) => {
+        const index = selectedSong.indexOf(id);
+        const newSelected = selectedSong.splice(index, 1);
+        setSelectedSong({
+            newSelected
+        })
+    }
     
+    const checkSelected = (id) => {
+        const select = selectedSong.includes(id);
+        return select;
+    };
+
+    const handleSelect = (id) => {
+        const isSelected = checkSelected(id);
+    
+        if (!isSelected) {
+          addTrack(id);
+        } else {
+          removeTrack(id);
+        }
+    };
 
     const title = `Search result for '${search}':`
     return (
@@ -68,7 +96,7 @@ function HomePage() {
                 <PageTitle title={title}/>
                 <div className="row">
                     {searchRes?.items?.map((song, idx) => (
-                        <SongCard data={song} key={idx} selectedSong={selectedSong} setSelected={setSelectedSong}/>
+                        <SongCard data={song} key={idx} handleSelect={handleSelect} isSelected={checkSelected(song.uri)}/>
                     ))}
                 </div>
             </div>
