@@ -2,25 +2,18 @@ import React, {useState, useEffect} from "react";
 import { BsFillPlayFill, BsX } from "react-icons/bs";
 import "./Song.css";
 
-function SongCard({ data, selectedSong, setSelected}) {
-    const isSelected = selectedSong?.includes(data.id);
-    const [select, setSelect] = useState(isSelected);
+type trackProps = {
+    data?: any,
+    handleSelect: Function,
+    isSelected: boolean,
+}
 
-    const handleAddToSelected = () => {
-        setSelect(!select);
-        const newSelected = [...selectedSong, data.id]
-        setSelected(newSelected);
-    }
-
-    const handleRemoveFromSelected = () => {
-        setSelect(!select);
-        const newSelected = selectedSong.filter(idSong => idSong !== data.id);
-        setSelected(newSelected);
-    }
-
-    useEffect(() => {
-        
-    }, [selectedSong])
+function SongCard({ data, handleSelect, isSelected}: trackProps) {
+    
+    const handleClick = (e: any, uri: string) => {
+        e.preventDefault();
+        handleSelect(uri);
+    };
 
     return (
         <div className="col-md-4 songs">
@@ -31,18 +24,18 @@ function SongCard({ data, selectedSong, setSelected}) {
                         src={data.album.images[1].url}
                         alt="Eye_of_the_Storm"
                     />
-                    {select ? (
+                    {isSelected ? (
                         <button
-                            className="btn btn-primary-outline rounded-pill play-btn"
-                            onClick={handleRemoveFromSelected}
+                            className="btn btn-primary-outline rounded-pill play-btn d-flex"
+                            onClick={(e) => handleClick(e, data.uri)}
                         >
                             <BsX className="btn-icon" color="rgb(2, 95, 95)" size={27}/>
                             Deselect
                         </button>
                     ) : (
                         <button
-                            className="btn btn-primary rounded-pill play-btn"
-                            onClick={handleAddToSelected}
+                            className="btn btn-primary rounded-pill play-btn d-flex"
+                            onClick={(e) => handleClick(e, data.uri)}
                         >
                             <BsFillPlayFill color="eff5ed" size={27} />
                             Select
