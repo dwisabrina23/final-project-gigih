@@ -9,15 +9,15 @@ describe('Song track card sucessfully rendered', () => {
     test("render song card elements", () => {
         render(<SongCard data={data[0]} />);
     
-        const ImageTrack = screen.getByRole("img");
+        const imageTrack = screen.getByRole("img");
         const titleText = screen.getByText("Bohemian Rhapsody (The Original Soundtrack)");
         const artistsText = screen.getByText("Queen");
     
-        expect(ImageTrack).toHaveAttribute(
+        expect(imageTrack).toHaveAttribute(
           "src",
           "https://i.scdn.co/image/ab67616d00001e02e8b066f70c206551210d902b",
         );
-        expect(ImageTrack).toHaveAttribute(
+        expect(imageTrack).toHaveAttribute(
           "alt",
           "Bohemian Rhapsody (The Original Soundtrack)"
         );
