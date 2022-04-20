@@ -5,14 +5,14 @@ import SearchButton from "../../Components/Search/SearchButton";
 import SideMenu from "../../Components/SideMenu/SideMenu";
 import "./Home.css";
 import axios from "axios";
-import {useSelector} from "react-redux";
+import {useSelector, useDispatch} from "react-redux";
 import _ from "lodash";
+import {addSong, removeSong} from '../../Redux/Slice/SongSlice';
 
 function HomePage() {
     const [search, setSearch] = useState("")
     const [searchRes, setSearchRes] = useState([]);
-    const [selectedSong, setSelectedSong] = useState([]);
-
+    const dispatch = useDispatch();
     const accToken = useSelector((state) => state.auth.token);
 
     const handleSearchSong = async (keyword) => {
@@ -54,39 +54,27 @@ function HomePage() {
         } 
     }
 
-    const addTrack = (id) => {
-        const newSelected = [...selectedSong, id];
-        setSelectedSong({
-            newSelected
-        })
-    }
+    const selectedSongList = useSelector((state) => state.song.selected);
 
-    const removeTrack = (id) => {
-        const index = selectedSong.indexOf(id);
-        const newSelected = selectedSong.splice(index, 1);
-        setSelectedSong({
-            newSelected
-        })
-    }
-    
     const checkSelected = (id) => {
-        const select = selectedSong.includes(id);
-        return select;
+        return selectedSongList.includes(id);
     };
 
     const handleSelect = (id) => {
         const isSelected = checkSelected(id);
     
         if (!isSelected) {
-          addTrack(id);
+        //   addTrack(id);
+            dispatch(addSong(id));
         } else {
-          removeTrack(id);
+        //   removeTrack(id);
+            dispatch(removeSong(id));
         }
     };
 
     const title = `Search result for '${search}':`
     return (
-        <div className="row">
+        <div className="row home-wrapper">
             <div className="col-md-3 sidemenu">
                 <SideMenu/>
             </div>

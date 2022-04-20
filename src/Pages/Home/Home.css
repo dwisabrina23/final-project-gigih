@@ -14,14 +14,6 @@
     /* overflow */
     overflow: visible;
 }
-
-/* .search-container{
-  display: grid; 
-  height: inherit;
-  grid-template-columns: 1fr 1fr 1fr; 
-  grid-template-rows: 1fr 1fr 1fr 1fr; 
-  grid-template-areas: 
-    ". . ."
-    ". . ."
-    ". . ."; 
-} */
+.home-wrapper{
+    min-height: 1vh;
+}

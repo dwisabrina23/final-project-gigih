@@ -1,4 +1,5 @@
-import AuthSlice from './Slice/AuthSlice'
+import AuthSlice from './Slice/AuthSlice';
+import songSlice from './Slice/SongSlice';
 import { configureStore, combineReducers } from '@reduxjs/toolkit'
 import {
   persistStore,
@@ -14,6 +15,7 @@ import storage from 'redux-persist/lib/storage'
 
 const reducers = combineReducers({
   auth: AuthSlice,
+  song: songSlice,
 })
 
 const persistConfig = {
