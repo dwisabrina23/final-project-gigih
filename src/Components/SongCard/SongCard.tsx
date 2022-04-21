@@ -22,7 +22,7 @@ function SongCard({ data, handleSelect, isSelected}: trackProps) {
                     <img
                         className="card-img-top"
                         src={data.album.images[1].url}
-                        alt="Eye_of_the_Storm"
+                        alt={data.name}
                     />
                     {isSelected ? (
                         <button
