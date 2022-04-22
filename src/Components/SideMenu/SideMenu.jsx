@@ -22,10 +22,9 @@ function SideMenu() {
                     <span className="text-menu px-2">Playlist</span>
                 </div>
             </Link>
-            <hr />
             <Link to={`/home`} className="text-decoration-none mb-3">
                 <div className="item-menu mb-3 px-3 d-flex">
-                    <AiFillHome size="20" color="rgb(2, 95, 95)" />
+                    <AiFillHome size="18" color="rgb(2, 95, 95)" />
                     <span className="text-menu px-2">Home</span>
                 </div>
             </Link>

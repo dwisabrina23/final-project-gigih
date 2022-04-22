@@ -8,16 +8,17 @@ import SongCard from '../../Components/SongCard/SongCard'
 import SearchButton from '../../Components/Search/SearchButton'
 import SideMenu from '../../Components/SideMenu/SideMenu'
 import Navbar from '../../Components/Navbar/Navbar'
+import ModalAddPlaylist from '../../Components/Modal/ModalAddPlaylist';
 
 //redux
 import { useSelector, useDispatch } from 'react-redux'
 import { addSong, removeSong } from '../../Redux/Slice/SongSlice'
 
-//utils 
-import useDocumentTitle from '../../Utils/UseDocumentTitle';
+//utils
+import useDocumentTitle from '../../Utils/UseDocumentTitle'
 
 function HomePage() {
-  useDocumentTitle('Spoticlone | Home');
+  useDocumentTitle('Spoticlone | Home')
   const [search, setSearch] = useState('')
   const [searchRes, setSearchRes] = useState([])
   const dispatch = useDispatch()
@@ -72,19 +73,21 @@ function HomePage() {
   }
 
   const title = `Search result for '${search}':`
+
   return (
     <>
       <Navbar />
       <div className="row home-wrapper">
-        <div className="col-md-3 sidemenu">
+        <div className="col-md-2 sidemenu p-3">
           <SideMenu />
         </div>
-        <div className="col-md-9 song-section">
+        <div className="col-md-10 song-section">
           <SearchButton
             setSearch={setSearch}
             search={search}
             handleKeyPress={handleKeyPress}
           />
+          {selectedSongList.length !== 0 ? <ModalAddPlaylist /> : <></>}
           <hr />
           <PageTitle title={title} />
           <div className="row">

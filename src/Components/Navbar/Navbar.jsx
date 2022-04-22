@@ -18,7 +18,7 @@ export default function Navbar() {
       align="center"
       wrap="wrap"
       w="100%"
-      p={6}
+      p={4}
       bg="black"
       color="white"
     >
@@ -36,7 +36,7 @@ export default function Navbar() {
           align="center"
           justify={['center', 'space-between', 'flex-end', 'flex-end']}
           direction={['column', 'row', 'row', 'row']}
-          pt={[4, 4, 0, 0]}
+          pt={[3, 3, 0, 0]}
         >
           <Link href="/about">
             <Text display="block">About</Text>

@@ -2,7 +2,12 @@ import React, {useState} from 'react';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 
+//Toast
+import { Toaster } from 'react-hot-toast';
+import {ToastError, ToastSuccess} from '../../Components/Toast/CustomToast'
+
 function CreatePlaylist(props) {
+    useDocumentTitle('Spoticlone | Playlist')
     const token = useSelector((state) => state.auth.token);
     const userID = useSelector((state) => state.auth.user_id);
 
@@ -37,16 +42,22 @@ function CreatePlaylist(props) {
             .then((resp) => {
                 if(resp.status === 200){
                     console.log("playlist added!");
+                    return(
+                        ToastSuccess("playlist added!")
+                    )
                 }
-                console.log("isi response", resp);
             })
             .catch((e) => {
                 console.error(e)
+                return(
+                    ToastError("something error!")
+                )
             })
     };
 
     return (
         <div className='mb-3'>
+            <Toaster/>
             <h1 className="text-center txt-create">Create Playlist</h1>
             <div className="form-wrapper mb-3 w-50">
                 <form className="form" onSubmit={handleSubmit}>
