@@ -46,13 +46,12 @@ mudah
 | <ul><li> </li>| <ul><li> </li> |
 
 ## 💻 Tecnology That We Used
-<ul>
-  <li>React JS</li>
-  <li>Boostrap</li>
-  <li>Chakra-UI</li>
-  <li>Redux</li>
-  <li>GraphQL</li>
-</ul>
+  * [React JS](reactjs.org)
+  * [Typescript](typescriptlang.org/)
+  * [Boostrap5](https://getbootstrap.com/docs/5.0/getting-started/introduction/)
+  * [Chakra-UI](https://chakra-ui.com/)
+  * [Redux](redux.js.org)
+  * [GraphQL with Hasura](https://hasura.io)
   
 ## 🚀 Installation
 1. Clone this repository using 
