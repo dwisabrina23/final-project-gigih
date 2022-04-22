@@ -24,11 +24,6 @@
 <strong><a href="https://reservaksin.live">Preview Link</a></strong>
 </p>
 
-## Preview
-| Admin | User |
-| ----------- | ----------- |
-| <img src="./Dashboard-admin.svg" alt="preview admin">| <img src="./Landing Page- Before Login.svg" alt="preview user"> |
-
 ## 🎯 Project Goal
 Gigih adalah seorang anak muda yang menyukai musik. Hampir setiap hari dia
 mendengarkan musik di Spotify dari berbagai genre. Dia ingin membuat playlist (daftar
