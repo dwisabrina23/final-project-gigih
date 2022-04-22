@@ -37,12 +37,14 @@ membuat sebuah aplikasi berbasis web sehingga Gigih dapat membuat playlist denga
 mudah
 
 ## 🚩 MVP
-| Main | Additional |
-| ----------- | ----------- |
-| <ul><li>- [x] OAuth using Spotify account</li>| <ul><li>- [x] Edit playlist cover image</li> |
-| <ul><li>- [x] Create new playlist</li>| <ul><li>- [x] Edit playlist description</li> |
-| <ul><li>- [x] Add items to playlist</li>| <ul><li>- [x] Create Spotify quiz</li> |
-| <ul><li>- [x] Show user playlist</li>| <ul><li>- [x] Play Spotify quiz</li> |
+| Main |
+| -----------|
+| <ul><li>- [x] OAuth using Spotify account</li> |
+| <ul><li>- [x] Create new playlist</li> |
+| <ul><li>- [x] Add items to playlist</li> |
+| <ul><li>- [x] Show user playlist</li> |
+| <ul><li>- [x] Show user profile</li> |
+| <ul><li>- [x] Search Track </li> |
 | <ul><li> </li>| <ul><li> </li> |
 
 ## 💻 Tecnology That We Used
@@ -51,7 +53,6 @@ mudah
   * [Boostrap5](https://getbootstrap.com/docs/5.0/getting-started/introduction/)
   * [Chakra-UI](https://chakra-ui.com/)
   * [Redux](redux.js.org)
-  * [GraphQL with Hasura](https://hasura.io)
   
 ## 🚀 Installation
 1. Clone this repository using 
