@@ -45,5 +45,5 @@ export default function Router() {
 
 function PrivateRoute({ children }) {
   const isLoggedIn = useSelector((state) => state.auth.login)
-  return isLoggedIn ? children : <Navigate to="/login" />
+  return isLoggedIn ? children : <Navigate to="/" />
 }
