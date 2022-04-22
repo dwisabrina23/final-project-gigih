@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import HomePage from '../Pages/Home'
 import Login from '../Pages/Login/Login'
 
-import PLaylist from '../Pages/Playlist/PLaylist'
+import PlaylistPage from '../Pages/Playlist/PlaylistPage'
 import { setToken } from '../Redux/Slice/AuthSlice'
 export default function Router() {
   const dispatch = useDispatch()
@@ -34,7 +34,7 @@ export default function Router() {
           path="/playlist"
           element={
             <PrivateRoute>
-              <PLaylist />
+              <PlaylistPage />
             </PrivateRoute>
           }
         ></Route>
@@ -45,5 +45,5 @@ export default function Router() {
 
 function PrivateRoute({ children }) {
   const isLoggedIn = useSelector((state) => state.auth.login)
-  return isLoggedIn ? children : <Navigate to="/login" />
+  return isLoggedIn ? children : <Navigate to="/" />
 }

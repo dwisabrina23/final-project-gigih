@@ -1,5 +1,5 @@
 .sidemenu {
-    padding: 30px;
+    padding: 0px;
     background-color: rgb(138, 197, 175);
 }
 .song-section {
@@ -15,5 +15,5 @@
     overflow: visible;
 }
 .home-wrapper{
-    min-height: 1vh;
+    height: 1vh;
 }

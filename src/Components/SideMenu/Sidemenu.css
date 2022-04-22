@@ -5,16 +5,14 @@
     padding-top: 10px;
 }
 
-h1 {
-    font-size: 28px;
-}
   
 .txt-create {
     border-bottom: 3px solid rgb(9, 61, 61);
     padding-bottom: 5px;
 }
 .text-menu{
-    font-size: 1rem;
+    text-align: center;
+    font-size: 0.87rem;
     font-weight: bold;
     color: darkslategrey;
     font-family: Nunito, serif;
