@@ -21,7 +21,7 @@
 
 
 <p align="center">
-<strong><a href="https://reservaksin.live">Preview Link</a></strong>
+<strong><a href="https://spotify-clone-sabrina.netlify.app/">Preview Link</a></strong>
 </p>
 
 ## 🎯 Project Goal
