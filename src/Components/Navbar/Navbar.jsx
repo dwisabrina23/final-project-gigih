@@ -15,6 +15,7 @@ export default function Navbar() {
     <Flex
       as="nav"
       justify="space-between"
+      align="center"
       wrap="wrap"
       w="100%"
       p={6}
@@ -37,10 +38,10 @@ export default function Navbar() {
           direction={['column', 'row', 'row', 'row']}
           pt={[4, 4, 0, 0]}
         >
-          <Link href="/">
+          <Link href="/about">
             <Text display="block">About</Text>
           </Link>
-          <Link href="/about">
+          <Link href="/home">
             {isAuth ? <Profile data={userData} />
             :<Text display="block">Login with Spotify</Text>
           }

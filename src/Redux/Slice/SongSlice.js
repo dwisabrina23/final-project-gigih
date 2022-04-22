@@ -3,6 +3,7 @@ export const songSlice = createSlice({
     name: "song",
     initialState: {
         selected: [],
+        playlists: [],
     },
     reducers: {
         removeSong : (state, action) => {
@@ -19,10 +20,13 @@ export const songSlice = createSlice({
         },
         resetSelected:(state) => {
             state.selected = [];
+        },
+        setPlaylist: (state, action) => {
+            state.playlists = action.payload;
         }
     }
 })
 
-export const { addSong, removeSong} = songSlice.actions;
+export const { addSong, removeSong, resetSelected, setPlaylist} = songSlice.actions;
 
 export default songSlice.reducer;

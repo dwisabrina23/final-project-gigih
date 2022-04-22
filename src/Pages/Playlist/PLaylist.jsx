@@ -1,8 +1,9 @@
 import React from 'react';
 import SideMenu from "../../Components/SideMenu/SideMenu";
 import CreatePlaylist from '../../Components/Playlist/CreatePlaylist';
+import Playlist from '../../Components/Playlist/Playlist';
 
-function PLaylist(props) {
+function PLaylist() {
     return (
         <div>
              <div className="row">
@@ -11,6 +12,7 @@ function PLaylist(props) {
                 </div>
                 <div className="col-md-9 song-section">
                     <CreatePlaylist/>
+                    <Playlist/>
                 </div>
             </div>
         </div>

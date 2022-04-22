@@ -43,13 +43,12 @@ function CreatePlaylist(props) {
             .catch((e) => {
                 console.error(e)
             })
-        // window.location.reload();
     };
 
     return (
         <div className='mb-3'>
             <h1 className="text-center txt-create">Create Playlist</h1>
-            <div className="form-wrapper mb-3">
+            <div className="form-wrapper mb-3 w-50">
                 <form className="form" onSubmit={handleSubmit}>
                     <div className="form-floating mb-3">
                         <input
