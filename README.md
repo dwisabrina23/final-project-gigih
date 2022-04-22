@@ -1,70 +1,84 @@
-# Getting Started with Create React App
+<p align="right">:sparkles:GIGIH 2.0:sparkles:</p>
+<h1 align="center">SPOTICLONE</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align="center">
+<a href="http://unlicense.org/">
+<img src="https://img.shields.io/github/license/dwisabrina23/final-project-gigih?style=flat-square" alt="License: Unlicense">
+</a>
 
-## Available Scripts
+<a href="https://github.com/dwisabrina23/final-project-gigih">
+<img src="https://img.shields.io/github/last-commit/dwisabrina23/final-project-gigih?style=flat-square" alt="Last Commit">
+</a>
 
-In the project directory, you can run:
+<a href="https://github.com/markdown-templates/markdown-snippets/fork">
+<img src="https://img.shields.io/github/forks/dwisabrina23/final-project-gigih?style=flat-square" alt="Forks">
+</a>
+  
+<a href="https://github.com/dwisabrina23/final-project-gigih/graphs/contributors">
+<img src="https://img.shields.io/github/contributors/dwisabrina23/final-project-gigih?style=flat-square" alt="Contributor">
+</a>
+</p>
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<p align="center">
+<strong><a href="https://reservaksin.live">Preview Link</a></strong>
+</p>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Preview
+| Admin | User |
+| ----------- | ----------- |
+| <img src="./Dashboard-admin.svg" alt="preview admin">| <img src="./Landing Page- Before Login.svg" alt="preview user"> |
 
-### `npm test`
+## 🎯 Project Goal
+Gigih adalah seorang anak muda yang menyukai musik. Hampir setiap hari dia
+mendengarkan musik di Spotify dari berbagai genre. Dia ingin membuat playlist (daftar
+putar) yang berisikan lagu lagu yang sedang ia gandrungi. Bantulah Gigih dengan
+membuat sebuah aplikasi berbasis web sehingga Gigih dapat membuat playlist dengan
+mudah
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🚩 MVP
+| Main | Additional |
+| ----------- | ----------- |
+| <ul><li>- [x] OAuth using Spotify account</li>| <ul><li>- [x] Edit playlist cover image</li> |
+| <ul><li>- [x] Create new playlist</li>| <ul><li>- [x] Edit playlist description</li> |
+| <ul><li>- [x] Add items to playlist</li>| <ul><li>- [x] Create Spotify quiz</li> |
+| <ul><li>- [x] Show user playlist</li>| <ul><li>- [x] Play Spotify quiz</li> |
+| <ul><li> </li>| <ul><li> </li> |
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 💻 Tecnology That We Used
+<ul>
+  <li>React JS</li>
+  <li>Boostrap</li>
+  <li>Chakra-UI</li>
+  <li>Redux</li>
+  <li>GraphQL</li>
+</ul>
+  
+## 🚀 Installation
+1. Clone this repository using 
+```html
+git clone https://github.com/dwisabrina23/final-project-gigih.git
+```
+  
+2. Install all required package by run this command in your CMD
+```html
+npm install
+```
+3. Get your **spotify client ID**
+  - login to [spotify developer](https://developer.spotify.com/dashboard/)
+  - create an App
+  - copy your clientID
+  - go to edit settings > set your redirects URL to ```https://developer.spotify.com/dashboard/```
+  
+4. Create .env.local file and place your client id using this format
+```html
+REACT_APP_SPOTIFY_CLIENT_ID = your-spotify-client-id
+```
+5. App ready to serve
+```html
+npm start
+```
+  or
+```html
+yarn start
+```
