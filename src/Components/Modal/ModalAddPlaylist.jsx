@@ -11,8 +11,8 @@ import {
   Select,
   useDisclosure
 } from '@chakra-ui/react';
-
-import useDocumentTitle from '../../Utils/UseDocumentTitle'
+import {ToastError, ToastSuccess} from '../../Components/Toast/CustomToast';
+import {Toaster} from 'react-hot-toast'
 
 //services
 import {useAddTrackToPlaylist} from '../../Service/SpotifyServices';
@@ -20,31 +20,45 @@ import {useAddTrackToPlaylist} from '../../Service/SpotifyServices';
 //redux
 import {useSelector, useDispatch} from 'react-redux';
 import { resetSelected} from '../../Redux/Slice/SongSlice';
+import { useGetPlaylists } from '../../Service/SpotifyServices'
 
-function ModalAddPlaylist({id, title}) {
+function ModalAddPlaylist() {
   const dispatch = useDispatch();
-
   const selectedTracks = useSelector((state) => state.song.selected);
   const token = useSelector((state) => state.auth.token);
-  const userData = useSelector((state) => state.auth.user_data);
+  const [playlists, setPlaylists] = useState([]);
 
-  const { isOpen, onOpen, onClose } = useDisclosure()
-  
+  useEffect(() => {
+    useGetPlaylists(token).then((data) =>{
+      setPlaylists(data.items)},
+    )
+  }, []);
+
+  const [playId, setPlayId] = useState('');
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const handleChange = (e) => {
+    const value = e.target.value;
+    setPlayId(value);
+  }
+
   const handleAddPlaylist = (id) => {
     e.preventDefault();
+    const songs = selectedTracks.toString()
     if (selectedTracks.length > 0) {
-      // const userId = userData?.id;
-      addTrackToPlaylist(token, id, selectedTracks).then(
+        useAddTrackToPlaylist(token, id, songs).then(
             (data) => console.log(data)
       );
 
-      toast(`Song added to Playlist`);
+      ToastSuccess(`Song added to Playlist`);
       dispatch(resetSelected());
       history.push("/playlist");
     }
   }
+
   return (
     <>
+    <Toaster/>
       <Button bg="rgb(138, 197, 175)" borderRadius='3xl' variant='solid' onClick={onOpen} sx={{float:"right"}}>Add to Playlist</Button>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
@@ -53,9 +67,11 @@ function ModalAddPlaylist({id, title}) {
           <ModalCloseButton />
           <ModalBody>
             <Select placeholder="Select playlist">
-              <option value="option1">Option 1</option>
-              <option value="option2">Option 2</option>
-              <option value="option3">Option 3</option>
+              {
+                playlists.map((item) => (
+                  <option value={item.id} key={item.id} onChange={handleChange}>{item.name}</option>
+                ))
+              }
             </Select>
           </ModalBody>
 

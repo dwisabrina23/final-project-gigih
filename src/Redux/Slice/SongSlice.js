@@ -16,7 +16,7 @@ export const songSlice = createSlice({
         },
         addSong: (state, action) =>{
             console.log("add song... ", action.payload);
-            state.selected = [...state.selected, action.payload]
+            state.selected.push(action.payload);
         },
         resetSelected:(state) => {
             state.selected = [];

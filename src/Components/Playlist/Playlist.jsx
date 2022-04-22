@@ -5,7 +5,7 @@ import { useGetPlaylists } from '../../Service/SpotifyServices'
 import { useDispatch, useSelector } from 'react-redux'
 import { setPlaylist } from '../../Redux/Slice/SongSlice'
 
-//dcomponents
+//components
 import PlaylistItem from './PlaylistItem';
 
 function Playlist() {
@@ -14,11 +14,10 @@ function Playlist() {
   const [playlists, setPlaylists] = useState([])
   useEffect(() => {
     useGetPlaylists(token).then((data) =>{
-      console.log(data)
       setPlaylists(data.items)
       dispatch(setPlaylist(data.items))},
     )
-  }, [])
+  }, []);
 
   return (
     <div className="row p-3">

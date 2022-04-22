@@ -5,9 +5,11 @@ import SideMenu from "../../Components/SideMenu/SideMenu";
 import CreatePlaylist from '../../Components/Playlist/CreatePlaylist';
 import Playlist from '../../Components/Playlist/Playlist';
 import Navbar from '../../Components/Navbar/Navbar';
+import useDocumentTitle from '../../Utils/UseDocumentTitle'
 
-function PLaylist() {
-    
+function PlaylistPage() {
+    useDocumentTitle('Spoticlone | Playlist');
+
     return (
         <div>
             <Navbar/>
@@ -24,4 +26,4 @@ function PLaylist() {
     );
 }
 
-export default PLaylist;
+export default PlaylistPage;

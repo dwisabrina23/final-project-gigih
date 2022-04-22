@@ -7,7 +7,6 @@ import { Toaster } from 'react-hot-toast';
 import {ToastError, ToastSuccess} from '../../Components/Toast/CustomToast'
 
 function CreatePlaylist(props) {
-    useDocumentTitle('Spoticlone | Playlist')
     const token = useSelector((state) => state.auth.token);
     const userID = useSelector((state) => state.auth.user_id);
 
@@ -27,7 +26,12 @@ function CreatePlaylist(props) {
 
     const handleSubmit = (e) => {
         e.preventDefalut();
-        handleCreatePlaylist(playlist);
+        if(playlist.title !== "" && playlist.description !== ""){
+            handleCreatePlaylist(playlist);
+            setPlaylist(initForm);
+        }else {
+            ToastError('Fill all the form!')
+        }
     }
 
     const handleCreatePlaylist = (values) => {
